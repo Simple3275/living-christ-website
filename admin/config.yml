@@ -31,8 +31,6 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 # Add site links in Decap CMS (optional)
 site_url: https://living-christ-website.vercel.app
 
-local_backend: true
-
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
