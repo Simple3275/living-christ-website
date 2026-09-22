@@ -53,20 +53,23 @@ collections:
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Short Description", name: "description", widget: "text" }
               
-  - name: "sermons"
-    label: "Sermons & Audio"
-    folder: "content/sermons"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Sermon Title", name: "title", widget: "string" }
-      - { label: "Preacher / Speaker", name: "preacher", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Date Preached", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Audio URL", name: "audioUrl", widget: "string" }
-      - { label: "Summary", name: "summary", widget: "text" }
+  - name: "sermons_data"
+    label: "Sermons & Messages"
+    files:
+      - file: "content/sermons.json"
+        label: "Sermons List"
+        name: "sermons"
+        fields:
+          - label: "Sermons"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Sermon Title", name: "title", widget: "string" }
+              - { label: "Preacher / Speaker", name: "preacher", widget: "string" }
+              - { label: "Date Preached", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Category", name: "category", widget: "string", required: false }
+              - { label: "Audio URL (MP3)", name: "audioUrl", widget: "string", required: false }
+              - { label: "Summary / Notes", name: "description", widget: "text", required: false }
 
   - name: "settings"
     label: "Site Content"
