@@ -1,12 +1,28 @@
 {
   "items": [
     {
-      "title": "youth program ",
-      "category": "conference",
-      "date": "2026-09-29",
-      "time": "7:00am daily",
-      "location": "osegere",
-      "description": "youth program for encounters"
+      "title": "General Deliverance",
+      "category": "Prayer Meeting",
+      "date": "2026-10-01",
+      "time": "9:00am",
+      "location": "Church Headquarter",
+      "description": "Experience supernatural liberation, healing, and spiritual renewal through intense prayer, God's Word, and anointed deliverance ministry."
+    },
+    {
+      "title": "Church Anniversary ",
+      "category": "Anniversary ",
+      "date": "2026-11-01",
+      "time": "11:00am",
+      "location": "Church Headquarter",
+      "description": "Join us as we celebrate God’s unwavering faithfulness, grace, and impact over the years with a special service of praise, worship, and thanksgiving."
+    },
+    {
+      "title": "Weekend of Power",
+      "category": "Power Program",
+      "date": "2026-11-13",
+      "time": "12:00pm on Friday-10:00am on Monday ",
+      "location": "Alabebe Zonal Church",
+      "description": "An intensive weekend encounter filled with explosive worship, deep teaching, and miraculous manifestations of God’s power and presence."
     }
   ]
 }
