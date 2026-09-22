@@ -1,6 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Simple3275/living-christ-website
   branch: main
+  site_domain: living-christ-website.vercel.app 
+  base_url: https://decap-bridge.vercel.app
+  auth_endpoint: /api/auth
 
 local_backend: true
 
