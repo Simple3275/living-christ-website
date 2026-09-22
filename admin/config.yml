@@ -70,7 +70,6 @@ collections:
               - { label: "Category", name: "category", widget: "string", required: false }
               - { label: "Audio URL (MP3)", name: "audioUrl", widget: "string", required: false }
               - { label: "Summary / Notes", name: "description", widget: "text", required: false }
-
   - name: "settings"
     label: "Site Content"
     files:
