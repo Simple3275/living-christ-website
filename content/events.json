@@ -6,23 +6,39 @@
       "date": "2026-10-01",
       "time": "9:00am",
       "location": "Church Headquarter",
-      "description": "Experience total liberation through intense worship, prophetic ministry, and powerful deliverance prayers aimed at breaking spiritual barriers and restoration in Christ."
+      "description": "Experience supernatural liberation, healing, and spiritual renewal through intense prayer, God's Word, and anointed deliverance ministry."
     },
     {
-      "title": "10 Days Power Program",
-      "category": "CONFERENCE",
-      "date": "2026-10-17",
-      "time": "8:00am daily",
+      "title": "Church Anniversary ",
+      "category": "Anniversary ",
+      "date": "2026-11-01",
+      "time": "11:00am",
       "location": "Church Headquarter",
-      "description": "A dedicated spiritual journey focused on revival, empowerment, and supernatural breakthroughs."
+      "description": "Join us as we celebrate God’s unwavering faithfulness, grace, and impact over the years with a special service of praise, worship, and thanksgiving."
     },
     {
-      "title": "3 Days Power Program",
-      "category": "CONFERENCE",
-      "date": "2026-10-16",
-      "time": "8:00am daily",
-      "location": "Church Headquarter",
-      "description": "An intensive gathering packed with anointed teaching, deliverance, and deep encounters in God's presence."
+      "title": "Weekend of Power",
+      "category": "Power Program",
+      "date": "2026-11-13",
+      "time": "12:00pm on Friday-10:00am on Monday ",
+      "location": "Alabebe Zonal Church",
+      "description": "An intensive weekend encounter filled with explosive worship, deep teaching, and miraculous manifestations of God’s power and presence."
+    },
+    {
+      "title": "Miracle/Anointing Service",
+      "category": "Special Sunday",
+      "date": "2026-12-06",
+      "time": "8:00am",
+      "location": "Alabebe Zonal Church ",
+      "description": "A sacred service set apart for the impartation of the Holy Spirit, divine healing, and the breaking of yokes through the power of the anointing."
+    },
+    {
+      "title": "General Night Vigil",
+      "category": "Deliverance Vigil",
+      "date": "2026-12-11",
+      "time": "10:00pm",
+      "location": "Osegere Zonal Church",
+      "description": "Join us for an empowering midnight encounter as we gather for extended prayer, prophetic worship, and spiritual warfare to command our morning."
     }
   ]
 }
