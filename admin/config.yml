@@ -35,21 +35,24 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  - name: "events"
+  - name: "events_data"
     label: "Upcoming Events"
-    folder: "content/events"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Event Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Event Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Time Description", name: "time", widget: "string" }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Short Description", name: "description", widget: "text" }
-
+    files:
+      - file: "content/events.json"
+        label: "Events List"
+        name: "events"
+        fields:
+          - label: "Events"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Event Title", name: "title", widget: "string" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Event Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Time Description", name: "time", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Short Description", name: "description", widget: "text" }
+              
   - name: "sermons"
     label: "Sermons & Audio"
     folder: "content/sermons"

@@ -149,71 +149,56 @@ document.addEventListener('DOMContentLoaded', async () => {
   const eventsGrid = document.getElementById('events-grid');
   const noEventsMsg = document.getElementById('no-events-msg');
 
-  // Get today's date at midnight (00:00:00)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
-  // Add the relative paths of the JSON files published by Decap CMS
-  const eventFiles = [
-    'content/events/2026-10-16-3-days-power-program.json'
-  ];
 
   let visibleCount = 0;
   let cardsHTML = '';
 
-  for (const filePath of eventFiles) {
-    try {
-      const res = await fetch(filePath);
-      if (!res.ok) continue;
+  try {
+    const res = await fetch('content/events.json');
+    if (res.ok) {
+      const data = await res.json();
+      const events = data.items || [];
 
-      const event = await res.json();
+      for (const event of events) {
+        if (event.date) {
+          const [year, month, day] = event.date.split('-').map(Number);
+          const eventDate = new Date(year, month - 1, day);
+          eventDate.setHours(0, 0, 0, 0);
 
-      // Parse YYYY-MM-DD cleanly using local time parameters
-      if (event.date) {
-        const [year, month, day] = event.date.split('-').map(Number);
-        const eventDate = new Date(year, month - 1, day);
-        eventDate.setHours(0, 0, 0, 0);
+          if (eventDate < today) continue;
+        }
 
-        // Skip past events
-        if (eventDate < today) continue;
-      }
+        visibleCount++;
 
-      visibleCount++;
-
-      // Build card with exact SVG icon and Tailwind classes
-      cardsHTML += `
-        <article class="event-card bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:border-brand-gold/50 transition-colors p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6" data-date="${event.date}">
-          <div class="flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-[10px] font-semibold bg-brand-gold/10 text-brand-gold px-2.5 py-0.5 rounded-full uppercase tracking-wider">${event.category || 'Event'}</span>
-              <span class="text-xs text-gray-400 font-medium">${event.date}</span>
+        cardsHTML += `
+          <article class="event-card bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:border-brand-gold/50 transition-colors p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6" data-date="${event.date}">
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-[10px] font-semibold bg-brand-gold/10 text-brand-gold px-2.5 py-0.5 rounded-full uppercase tracking-wider">${event.category || 'Event'}</span>
+                <span class="text-xs text-gray-400 font-medium">${event.date}</span>
+              </div>
+              <h3 class="font-serif font-bold text-lg md:text-xl text-brand-navy mb-1">${event.title}</h3>
+              <p class="text-xs text-gray-600 max-w-3xl leading-relaxed">${event.description}</p>
             </div>
-            <h3 class="font-serif font-bold text-lg md:text-xl text-brand-navy mb-1">${event.title}</h3>
-            <p class="text-xs text-gray-600 max-w-3xl leading-relaxed">${event.description}</p>
-          </div>
-          <div class="flex md:flex-col justify-between md:items-end items-center gap-2 pt-4 md:pt-0 border-t md:border-t-0 border-gray-100 shrink-0 md:min-w-[160px]">
-            <span class="flex items-center gap-1.5 text-xs font-semibold text-brand-navy">
-              <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              ${event.time}
-            </span>
-            <span class="text-[11px] text-gray-500 font-medium">${event.location}</span>
-          </div>
-        </article>
-      `;
-    } catch (err) {
-      console.error('Error loading event file:', filePath, err);
+            <div class="flex md:flex-col justify-between md:items-end items-center gap-2 pt-4 md:pt-0 border-t md:border-t-0 border-gray-100 shrink-0 md:min-w-[160px]">
+              <span class="flex items-center gap-1.5 text-xs font-semibold text-brand-navy">
+                <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                ${event.time}
+              </span>
+              <span class="text-[11px] text-gray-500 font-medium">${event.location}</span>
+            </div>
+          </article>
+        `;
+      }
     }
+  } catch (err) {
+    console.error('Error loading events:', err);
   }
 
-  // Render dynamic cards into the grid
-  if (eventsGrid) {
-    eventsGrid.innerHTML = cardsHTML;
-  }
-
-  // Toggle empty state display
-  if (noEventsMsg) {
-    noEventsMsg.style.display = (visibleCount === 0) ? 'block' : 'none';
-  }
+  if (eventsGrid) eventsGrid.innerHTML = cardsHTML;
+  if (noEventsMsg) noEventsMsg.style.display = (visibleCount === 0) ? 'block' : 'none';
 });
 </script>
 </body>
