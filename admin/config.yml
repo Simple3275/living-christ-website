@@ -1,0 +1,51 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "events"
+    label: "Upcoming Events"
+    folder: "content/events"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Event Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Time Description", name: "time", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text" }
+
+  - name: "sermons"
+    label: "Sermons & Audio"
+    folder: "content/sermons"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Sermon Title", name: "title", widget: "string" }
+      - { label: "Preacher / Speaker", name: "preacher", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Date Preached", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Audio URL", name: "audioUrl", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
+
+  - name: "settings"
+    label: "Site Content"
+    files:
+      - file: "content/settings/pastors.json"
+        label: "Lead Pastors Profile"
+        name: "pastors"
+        fields:
+          - { label: "Names", name: "names", widget: "string", default: "Pastor [Name] & Pastor (Mrs) [Name]" }
+          - { label: "Title / Role", name: "title", widget: "string", default: "Lead Pastors" }
+          - { label: "Joint Photo", name: "photo", widget: "image" }
+          - { label: "Biography", name: "bio", widget: "text" }
